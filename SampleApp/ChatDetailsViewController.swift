@@ -27,4 +27,29 @@ class ChatDetailsViewController: UIViewController
         title = "Chat from \(chat.sender.name)"
         imageView?.image = chat.image
     }
+    
+    //DEMO - Adding preview action items
+//    override var previewActionItems: [UIPreviewActionItem]
+//    {
+//        let handler = {(action: UIPreviewAction, viewController: UIViewController) -> Void in
+//            //Does nothing for now - this is where you'd add something to happen
+//        }
+//        
+//        //"Send Reply" action with a group of possible replies
+//        let replyActions = [UIPreviewAction(title: "❤️", style: .default, handler: handler),
+//                            UIPreviewAction(title: "😄", style: .default, handler: handler),
+//                            UIPreviewAction(title: "👍", style: .default, handler: handler),
+//                            UIPreviewAction(title: "😯", style: .default, handler: handler),
+//                            UIPreviewAction(title: "😢", style: .default, handler: handler),
+//                            UIPreviewAction(title: "😈", style: .default, handler: handler)]
+//        let sendReply = UIPreviewActionGroup(title: "Send Reply...", style: .default, actions: replyActions)
+//        
+//        //"Favorite" action with style selected
+//        let favorite = UIPreviewAction(title: "Favorite", style: .selected, handler: handler)
+//        
+//        //"Block" action with style destructive
+//        let block = UIPreviewAction(title: "Block", style: .destructive, handler: handler)
+//        
+//        return [sendReply, favorite, block]
+//    }
 }

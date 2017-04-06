@@ -16,6 +16,9 @@ class ChatViewController: UIViewController
     {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        
+        //1- Need to register for previewing
+        registerForPreviewing(with: self, sourceView: tableView)
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -84,6 +87,32 @@ extension ChatViewController : UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
         cell.textLabel?.text = "Chat from \(item.sender.name)"
         return cell
+    }
+}
+
+//2 - Conform to UIViewControllerPreviewingDelegate
+extension ChatViewController : UIViewControllerPreviewingDelegate
+{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
+    {
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let chatDetailsVC = storyboard.instantiateViewController(withIdentifier: "ChatDetailsViewController") as!ChatDetailsViewController
+        chatDetailsVC.chat = chat(at: indexPath)
+        
+        //3 - Specify source rect
+        let cellRect = tableView.rectForRow(at: indexPath)
+        previewingContext.sourceRect = previewingContext.sourceView.convert(cellRect, from: tableView)
+        
+        //4 - Return previewing VC
+        return chatDetailsVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
+    {
+        //5 - Show the VC, using any animation
+        show(viewControllerToCommit, sender: self)
     }
 }
 

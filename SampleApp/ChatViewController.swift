@@ -18,9 +18,9 @@ class ChatViewController: UIViewController
         tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         
         if let selectedIndexPaths = tableView.indexPathsForSelectedRows
         {
@@ -63,9 +63,9 @@ extension ChatViewController
 {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let chatDetailsVC = segue.destination as? ChatDetailsViewController, let selectedIndexPath = tableView.indexPathForSelectedRow
+        if let chatDetailsVC = segue.destination as? ChatDetailsViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell)
         {
-            chatDetailsVC.chat = chat(at: selectedIndexPath)
+            chatDetailsVC.chat = chat(at: indexPath)
         }
     }
 }

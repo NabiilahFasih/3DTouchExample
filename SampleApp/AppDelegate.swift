@@ -40,17 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     }
     
     //DEMO - Handle actions 2
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void)
-    {
-        var didHandleShortcutItem = false
-        
-        if let rootViewController = window?.rootViewController
-        {
-            didHandleShortcutItem = QuickActionHandler.handle(shortcutItem, with: rootViewController)
-        }
-        
-        completionHandler(didHandleShortcutItem)
-    }
+//    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void)
+//    {
+//        var didHandleShortcutItem = false
+//        
+//        if let rootViewController = window?.rootViewController
+//        {
+//            didHandleShortcutItem = QuickActionHandler.handle(shortcutItem, with: rootViewController)
+//        }
+//        
+//        completionHandler(didHandleShortcutItem)
+//    }
     
 }
 

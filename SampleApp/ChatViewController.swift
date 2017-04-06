@@ -35,6 +35,28 @@ class ChatViewController: UIViewController
     {
         return MockDataManager.shared.chats[indexPath.row]
     }
+    
+    @IBAction func composeButtonTapped(_ sender: Any)
+    {
+        composeNewChat(to: nil)
+    }
+    
+    func composeNewChat(to friend: Friend?)
+    {
+        var message: String
+        if let friend = friend
+        {
+            message = "This is where we'd send the chat to your friend \(friend.name)."
+        }
+        else
+        {
+            message = "This is where you'd choose a friend, and then we'd send the chat to them."
+        }
+        
+        let alertViewController = UIAlertController(title: "New Chat", message: message, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        present(alertViewController, animated: true, completion: nil);
+    }
 }
 
 extension ChatViewController

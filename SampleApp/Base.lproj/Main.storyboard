@@ -66,7 +66,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="uwY-DK-6yb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="rvD-hJ-Ler"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="rvD-hJ-Ler">
+                            <connections>
+                                <action selector="composeButtonTapped:" destination="BYZ-38-t0r" id="Mrg-gt-Zhp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sZz-hM-P8m" id="91g-v7-yOC"/>

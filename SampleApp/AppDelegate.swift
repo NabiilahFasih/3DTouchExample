@@ -17,40 +17,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        //DEMO - Dynamic actions
-//        QuickActionHandler.setDynamicShortcutItems(for: application)
-//        return true
+        window?.makeKeyAndVisible()
         
-        //DEMO - Handle actions 1
-//        window?.makeKeyAndVisible()
-//        
-//        var performAdditionalHandling = true
-//        
-//        if let shortcutItem = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem, let rootViewController = window?.rootViewController
-//        {
-//            let didHandleShortcutItem = QuickActionHandler.handle(shortcutItem, with: rootViewController)
-//            performAdditionalHandling = !didHandleShortcutItem
-//        }
-//        
-//        QuickActionHandler.setDynamicShortcutItems(for: application)
-//        
-//        return performAdditionalHandling
+        var performAdditionalHandling = true
         
-        return true
+        if let shortcutItem = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem, let rootViewController = window?.rootViewController
+        {
+            let didHandleShortcutItem = QuickActionHandler.handle(shortcutItem, with: rootViewController)
+            performAdditionalHandling = !didHandleShortcutItem
+        }
+        
+        QuickActionHandler.setDynamicShortcutItems(for: application)
+        
+        return performAdditionalHandling
     }
-    
-    //DEMO - Handle actions 2
-//    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void)
-//    {
-//        var didHandleShortcutItem = false
-//        
-//        if let rootViewController = window?.rootViewController
-//        {
-//            didHandleShortcutItem = QuickActionHandler.handle(shortcutItem, with: rootViewController)
-//        }
-//        
-//        completionHandler(didHandleShortcutItem)
-//    }
-    
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void)
+    {
+        var didHandleShortcutItem = false
+        
+        if let rootViewController = window?.rootViewController
+        {
+            didHandleShortcutItem = QuickActionHandler.handle(shortcutItem, with: rootViewController)
+        }
+        
+        completionHandler(didHandleShortcutItem)
+    }
 }
 
